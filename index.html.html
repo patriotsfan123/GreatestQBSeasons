@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greatest NFL QB Seasons - MVP Top 3 Rankings</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title-container">
+                <i data-lucide="trophy" class="trophy-icon"></i>
+                <h1>Greatest QB Seasons</h1>
+                <i data-lucide="trophy" class="trophy-icon"></i>
+            </div>
+            <p class="subtitle">Based on Index Stats Formula</p>
+        </div>
+
+        <div class="filters-panel">
+            <div class="filter-group">
+                <label>Search</label>
+                <div class="input-wrapper">
+                    <i data-lucide="search" class="input-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Player, team, or year...">
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>Filter by Player</label>
+                <div class="input-wrapper">
+                    <i data-lucide="filter" class="input-icon"></i>
+                    <select id="playerFilter"></select>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label>Filter by Era</label>
+                <div class="input-wrapper">
+                    <i data-lucide="trending-up" class="input-icon"></i>
+                    <select id="eraFilter">
+                        <option value="All">All</option>
+                        <option value="Modern (2020s)">Modern (2020s)</option>
+                        <option value="2010s">2010s</option>
+                        <option value="2000s">2000s</option>
+                        <option value="1990s">1990s</option>
+                        <option value="1980s">1980s</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="formulaToggle" class="formula-toggle">Show Formula Details</button>
+            
+            <div id="formulaDetails" class="formula-details hidden">
+                <p class="formula-title">Scoring Formula:</p>
+                <p class="formula-text">Score = (ANY/A+ ÷ 2) + (Cmp%+ ÷ 2) + (TD%+ ÷ 2) + (INT%+ ÷ 2) + (Rate+ ÷ 2) + Bonuses</p>
+                <p class="bonuses-title"><strong>Bonuses:</strong></p>
+                <ul class="bonuses-list">
+                    <li>• League Leader Passing Yards: +10 pts</li>
+                    <li>• League Leader Passing TDs: +10 pts</li>
+                    <li>• QB Leader Rushing Yards: +5 pts</li>
+                    <li>• QB Leader Rushing TDs: +2.5 pts</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Score</th>
+                        <th>Player</th>
+                        <th>Season</th>
+                        <th>Team</th>
+                        <th>MVP</th>
+                        <th>Bonuses</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="top-10-panel">
+            <h3>🏈 Top 10 All-Time QB Seasons</h3>
+            <div class="top-10-list">
+                <p><strong class="gold">1. Peyton Manning 2004:</strong> 369.5</p>
+                <p><strong class="silver">2. Tom Brady 2007:</strong> 369.0</p>
+                <p><strong class="bronze">3. Dan Marino 1984:</strong> 360.5</p>
+                <p><strong>4. Steve Young 1994:</strong> 354.0</p>
+                <p><strong>5. Peyton Manning 2013:</strong> 353.0</p>
+                <p><strong>6. Aaron Rodgers 2011:</strong> 351.5</p>
+                <p><strong>7. Aaron Rodgers 2020:</strong> 347.0</p>
+                <p><strong>8. Steve Young 1992:</strong> 343.0</p>
+                <p><strong>9. Lamar Jackson 2024:</strong> 342.5</p>
+                <p><strong>10. Drew Brees 2011:</strong> 342.0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalSubtitle" class="modal-subtitle"></p>
+                </div>
+                <button id="modalClose" class="modal-close">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="score-display">
+                    <p class="score-label">Total Score</p>
+                    <p id="modalTotalScore" class="score-value"></p>
+                </div>
+                
+                <div class="stats-grid" id="modalStatsGrid">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+            
+            <button id="modalCloseBtn" class="modal-close-btn">Close</button>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
